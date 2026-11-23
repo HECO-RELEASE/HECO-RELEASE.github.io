@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Human Pose, Human Mesh, Virtual Human, 3D Reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Dense Hand Contact Estimation from Imbalanced Data</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon_snu.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Learning Dense Hand Contact Estimation from Imbalanced Data</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://dqj5182.github.io/">Daniel Sungho Jung</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://cv.snu.ac.kr/index.php/~kmlee/">Kyoung Mu Lee</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Seoul National University,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">NeurIPS 2025</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2505.11152"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2505.11152"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/dqj5182/HACO_RELEASE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/dqj5182/HACO" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">🤗</span>
+                  <span>Demo</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <p style="text-align: center;">
+        <img src="./static/images/haco_challenges.png" style="max-height: 750px; height: auto;">
+      </p>  
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">HACO</span> is a framework for dense hand contact estimation that addresses class and spatial imbalance challenges in training on large-scale datasets.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Hands are essential to human interaction, and understanding contact between hands and the world can promote comprehensive understanding of their function. 
+            Recently, there have been growing number of hand interaction datasets that cover interaction with object, other hand, scene, and body. 
+            Despite the significance of the task and increasing high-quality data, how to effectively learn dense hand contact estimation remains largely underexplored. 
+            There are two major challenges for learning dense hand contact estimation. 
+            First, there exists class imbalance issue from hand contact datasets where majority of samples are not in contact. 
+            Second, hand contact datasets contain spatial imbalance issue with most of hand contact exhibited in finger tips, resulting in challenges for generalization towards contacts in other hand regions. 
+            To tackle these issues, we present a framework that learns dense HAnd COntact estimation (HACO) from imbalanced data. 
+            To resolve the class imbalance issue, we introduce balanced contact sampling, which builds and samples from multiple sampling groups that fairly represent diverse contact statistics for both contact and non-contact samples. 
+            Moreover, to address the spatial imbalance issue, we propose vertex-level class-balanced (VCB) loss, which incorporates spatially varying contact distribution by separately reweighting loss contribution of each vertex based on its contact frequency across dataset. 
+            As a result, we effectively learn to predict dense hand contact estimation with large-scale hand contact data without suffering from class and spatial imbalance issue. 
+            The codes will be released.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+  
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Dataset configuration -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset Configuration</h2>
+        <div class="content has-text-justified">
+          <p>
+            We leverage 14 datasets with various hand interaction. The datasets span hand-object interaction, hand-hand interaction, hand-scene interaction, hand-body interaction.
+          </p>
+        </div>
+        <img src="./static/images/haco_dataset_configuration.png" height="250%">
+      </div>
+    </div>
+    <!--/ Dataset configuration -->
+
+    <!-- Model Architecture -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model Architecture</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our method encodes input image as image tokens with a ViT backbone after patch embedding layers. 
+            Given the image tokens along with positional embeddings and a contact token, multiple layers of self-attention Transformer and cross-attention Transformer produce an output token. 
+            Lastly, the output token is further processed with a linear layer and added with contact initialization that passes sigmoid layer to output final hand contact prediction.
+          </p>
+        </div>
+        <img src="./static/images/haco_overall_pipeline.png" height="250%">
+      </div>
+    </div>
+    <!--/ Model Architecture -->
+
+
+
+    <!-- Results: Contact -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results on MOW dataset</h2>
+        <img src="./static/images/haco_qualitative.png" height="250%">
+      </div>
+    </div>
+    <!--/ Results: Contact -->
+
+
+    <!-- Results: Contact -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results on Hi4D dataset</h2>
+        <img src="./static/images/haco_qualitative_hi4d.png" height="250%">
+      </div>
+    </div>
+    <!--/ Results: Contact -->
+
+
+    <!-- Results: Contact -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results on HIC and RICH dataset</h2>
+        <img src="./static/images/haco_qualitative_hic_rich.png" height="250%">
+      </div>
+    </div>
+    <!--/ Results: Contact -->
+    
+  
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent works that we wish to share.
+          </p>
+          <p>
+            <a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Cui_Class-Balanced_Loss_Based_on_Effective_Number_of_Samples_CVPR_2019_paper.pdf">Class-balanced loss based on effective number of samples.</a>
+          </p>
+          <p>
+            <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Tripathi_DECO_Dense_Estimation_of_3D_Human-Scene_Contact_In_The_Wild_ICCV_2023_paper.pdf">DECO: Dense Estimation of 3D Human-Scene Contact In The Wild.
+          </p>
+          <p>
+            <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Nam_Joint_Reconstruction_of_3D_Human_and_Object_via_Contact-Based_Refinement_CVPR_2024_paper.pdf">Joint Reconstruction of 3D Human and Object via Contact-Based Refinement Transformer.</a>
+          </p>
+          <p>
+            <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Pavlakos_Reconstructing_Hands_in_3D_with_Transformers_CVPR_2024_paper.pdf">Reconstructing Hands in 3D with Transformers.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre>
+<code>@article{jung2025haco,
+  title={Learning Dense Hand Contact Estimation from Imbalanced Data},
+  author={Jung, Daniel Sungho and Lee, Kyoung Mu},
+  journal={arXiv preprint arXiv:2505.11152},
+  year={2025}
+  }
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The code for this webpage is largely borrowed from the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
