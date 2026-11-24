@@ -168,10 +168,10 @@
         <h2 class="title is-3">Dataset Configuration</h2>
         <div class="content has-text-justified">
           <p>
-            We leverage 14 datasets with various hand interaction. The datasets span hand-object interaction, hand-hand interaction, hand-scene interaction, hand-body interaction.
+            We construct a dataset that contains diverse 3D head–object interactions with wide range of object categories.
           </p>
         </div>
-        <img src="./static/images/haco_dataset_configuration.png" height="250%">
+        <img src="./static/images/cohe_dataset.png" height="250%">
       </div>
     </div>
     <!--/ Dataset configuration -->
@@ -182,12 +182,12 @@
         <h2 class="title is-3">Model Architecture</h2>
         <div class="content has-text-justified">
           <p>
-            Our method encodes input image as image tokens with a ViT backbone after patch embedding layers. 
-            Given the image tokens along with positional embeddings and a contact token, multiple layers of self-attention Transformer and cross-attention Transformer produce an output token. 
-            Lastly, the output token is further processed with a linear layer and added with contact initialization that passes sigmoid layer to output final hand contact prediction.
+            Our method encodes image and text prompt with SigLIP2 encoders to build image feature and text feature. 
+            After semantic alignment, semantics aligned image feature is used for head-object segmentation that gates the aligned image feature to build head feature and head-object feature which learn hair occlusion through hairless image reconstruction and amodal mask prediction. 
+            The head feature, head-object feature, and the aligned image feature passes occlusion attention to build contact feature which is used by head contact decoder to predict final dense head contact.
           </p>
         </div>
-        <img src="./static/images/haco_overall_pipeline.png" height="250%">
+        <img src="./static/images/heco_model_architecture.png" height="250%">
       </div>
     </div>
     <!--/ Model Architecture -->
